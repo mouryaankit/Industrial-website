@@ -1,10 +1,9 @@
 package com.example.webview.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.webview.R
+import androidx.appcompat.app.AppCompatActivity
 import com.example.webview.databinding.ActivityWelcomeScreenBinding
 
 class WelcomeScreenActivity : AppCompatActivity() {
@@ -17,12 +16,11 @@ class WelcomeScreenActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnSubmit.setOnClickListener {
-            if(binding.etWeblink.text.isEmpty()){
-                Toast.makeText(this,"Please enter the link",Toast.LENGTH_LONG).show()
-            }
-            else{
-                val intent = Intent(this,WebViewActivity::class.java)
-                intent.putExtra("WebLink",binding.etWeblink.text.toString())
+            if (binding.etWeblink.text.isEmpty()) {
+                Toast.makeText(this, "Please enter the link", Toast.LENGTH_LONG).show()
+            } else {
+                val intent = Intent(this, WebViewActivity::class.java)
+                intent.putExtra("WebLink", binding.etWeblink.text.toString())
                 startActivity(intent)
             }
         }

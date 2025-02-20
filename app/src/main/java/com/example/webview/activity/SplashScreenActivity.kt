@@ -1,10 +1,10 @@
 package com.example.webview.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Looper
 import android.os.Handler
+import android.os.Looper
+import androidx.appcompat.app.AppCompatActivity
 import com.example.webview.R
 import com.example.webview.databinding.ActivitySplashScreenBinding
 
@@ -22,7 +22,7 @@ class SplashScreenActivity : AppCompatActivity() {
             val intent = Intent(this@SplashScreenActivity, WelcomeScreenActivity::class.java)
             startActivity(intent)
             finish()
-        },3000)
+        }, 3000)
 
 
     }

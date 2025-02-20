@@ -1,13 +1,11 @@
 package com.example.webview.activity
 
-import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
-import com.example.webview.R
+import androidx.appcompat.app.AppCompatActivity
 import com.example.webview.databinding.ActivityWebViewBinding
 
 class WebViewActivity : AppCompatActivity() {
@@ -20,7 +18,7 @@ class WebViewActivity : AppCompatActivity() {
 
         val data = intent.getStringExtra("WebLink")
 
-        Toast.makeText(this,data,Toast.LENGTH_LONG).show()
+        Toast.makeText(this, data, Toast.LENGTH_LONG).show()
 
         if (data != null) {
             binding.web.loadUrl(data)
@@ -31,7 +29,8 @@ class WebViewActivity : AppCompatActivity() {
         binding.web.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(
                 view: WebView?,
-                request: WebResourceRequest?): Boolean {
+                request: WebResourceRequest?
+            ): Boolean {
                 return false
             }
 
