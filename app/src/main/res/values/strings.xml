@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">WebView</string>
+
+
+    <!--    Welcome screen-->
+    <string name="edit_text_hint_message">Please enter the link here…</string>
+    <string name="submit">Submit</string>
+</resources>
