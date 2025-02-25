@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.webview.databinding.ActivityWebViewBinding
 
@@ -17,8 +16,6 @@ class WebViewActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val data = intent.getStringExtra("WebLink")
-
-        Toast.makeText(this, data, Toast.LENGTH_LONG).show()
 
         if (data != null) {
             binding.web.loadUrl(data)
@@ -36,29 +33,38 @@ class WebViewActivity : AppCompatActivity() {
 
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
+                val googleFontsUrl =
+                    "https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap"
+
                 val code = """javascript:(function() { 
+                    
+                        var link = document.createElement('link');
+                        link.rel = 'stylesheet';
+                        link.href = '$googleFontsUrl';
+                        document.head.appendChild(link);
     
-        var node = document.createElement('style');
-
-        node.type = 'text/css';
-        node.innerHTML = '@font-face {
-            font-family: custom_font_bold_italic;
-            src: url("file://assets/custom_font_bold_italic.ttf")
-        }
-        p,h1{
-            background-color: #22CEEB !important;
-        }
-        body ,p,h1,h2{
-
-            background-color: #f8f9fa;
-            font-family: custom_font_bold_italic;
-            font-size: 1rem;
-            font-weight: 500;
-        }';
-
-        document.head.appendChild(node);
-     
-    })()""".trimIndent()
+                        var node = document.createElement('style');
+                
+                        node.type = 'text/css';
+                        node.innerHTML = '
+                        body{
+                              background-color: #22CEEB;
+                        }
+                        h2{
+                             color : #03DAC5 !important;
+                             background-color: #FFFFFF;
+                             font-family: "Dancing Script", serif !important;
+                        }
+                        body,h1{
+                            color : #03DAC5;
+                            font-family: "Dancing Script", serif !important;
+                            font-size: 1rem;
+                            font-weight: 500;
+                        }';
+                
+                        document.head.appendChild(node);
+                     
+                    })()""".trimIndent()
 
                 if (data != null) {
                     binding.web.loadUrl(code)

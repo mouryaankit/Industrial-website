@@ -52,4 +52,5 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
 
     implementation("androidx.core:core-splashscreen:1.0.1")
+    implementation("androidx.webkit:webkit:1.12.1")
 }
