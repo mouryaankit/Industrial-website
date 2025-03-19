@@ -14,4 +14,6 @@
     <color name="red">#EE0000</color>
     <color name="orange">#E44817</color>
 
+    <color name="text_color_black">#0A0A0A</color>
+
 </resources>

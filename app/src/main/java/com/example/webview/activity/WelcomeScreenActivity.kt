@@ -20,7 +20,7 @@ class WelcomeScreenActivity : AppCompatActivity() {
             if (binding.etWeblink.text.isEmpty()) {
                 Toast.makeText(this, "Please enter the link", Toast.LENGTH_LONG).show()
             } else {
-                val intent = Intent(this, WebViewActivity::class.java)
+                val intent = Intent(this, DefaultWebsiteConfigurationScreen::class.java)
                 intent.putExtra("WebLink", binding.etWeblink.text.toString())
                 startActivity(intent)
             }
