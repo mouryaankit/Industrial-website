@@ -5,4 +5,8 @@
     <!--    Welcome screen-->
     <string name="edit_text_hint_message">Please enter the link here…</string>
     <string name="submit">Submit</string>
+
+    <!--    Default Website Configuration scree-->
+    <string name="save">Save</string>
+    <string name="style_view_message">Select the components you want to adjust (like font family, size, and colors) by clicking on them to see your changes in real-time.</string>
 </resources>
