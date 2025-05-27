@@ -22,16 +22,55 @@ class SelectedComponentData(var activity: Activity) {
             "Blue" -> activity.getColor(R.color.teal_200)
             "Purple" -> activity.getColor(R.color.purple_500)
             "Pink" -> activity.getColor(R.color.pink_200)
-            else -> activity.getColor(R.color.primary_color)
+            else -> -1
         }
     }
+
     fun getSelectedFontSize(selectedValue: String?): ArrayList<String> {
-         return when (selectedValue){
-             Constants.FontSize.bigSize -> arrayListOf("96px", "80px", "64px", "48px", "32px", "16px", "48px")
-             Constants.FontSize.mediumSize -> arrayListOf("64px", "56px", "48px", "32px", "16px", "16px", "32px")
-             Constants.FontSize.normalSize -> arrayListOf("48px", "40px", "32px", "16px", "16px", "16px", "16px")
-             Constants.FontSize.smallSize -> arrayListOf("32px", "28.8px", "24px", "16px", "16px", "12px", "16px")
-             else -> {arrayListOf("48px", "40px", "32px", "16px", "16px", "16px", "16px")}
-         }
+        return when (selectedValue) {
+            Constants.FontSize.bigSize -> arrayListOf(
+                "96px",
+                "80px",
+                "64px",
+                "48px",
+                "32px",
+                "16px",
+                "48px"
+            )
+
+            Constants.FontSize.mediumSize -> arrayListOf(
+                "64px",
+                "56px",
+                "48px",
+                "32px",
+                "16px",
+                "16px",
+                "32px"
+            )
+
+            Constants.FontSize.normalSize -> arrayListOf(
+                "48px",
+                "40px",
+                "32px",
+                "16px",
+                "16px",
+                "16px",
+                "16px"
+            )
+
+            Constants.FontSize.smallSize -> arrayListOf(
+                "32px",
+                "28.8px",
+                "24px",
+                "16px",
+                "16px",
+                "12px",
+                "16px"
+            )
+
+            else -> {
+                arrayListOf("48px", "40px", "32px", "16px", "16px", "16px", "16px")
+            }
+        }
     }
 }

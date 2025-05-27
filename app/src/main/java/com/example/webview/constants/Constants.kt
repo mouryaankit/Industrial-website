@@ -28,11 +28,23 @@ object Constants {
         const val backgroundColor = "2. Background Color"
         const val fontSize = "3.Font Size"
     }
+
     object FontSize {
         const val bigSize = "Big"
         const val mediumSize = "Medium"
         const val normalSize = "Normal"
         const val smallSize = "Small"
+    }
+
+    object SharedPreferences {
+        const val IsFirstLaunch = "isFirstLaunch"
+        const val CurrentWebLink = "currentWebLink"
+        const val ConfigForCurrentWeb = "configForCurrentWeb"
+
+    }
+
+    object Intents {
+        const val SHARED_PREFERENCES = "SHARED_PREFERENCES"
     }
 
 }
