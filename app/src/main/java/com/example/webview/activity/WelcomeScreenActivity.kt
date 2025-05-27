@@ -5,7 +5,9 @@ import android.graphics.Rect
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.webview.constants.Constants
 import com.example.webview.databinding.ActivityWelcomeScreenBinding
+import com.example.webview.utils.SharedPreferences
 
 class WelcomeScreenActivity : AppCompatActivity() {
 
@@ -20,6 +22,11 @@ class WelcomeScreenActivity : AppCompatActivity() {
             if (binding.etWeblink.text.isEmpty()) {
                 Toast.makeText(this, "Please enter the link", Toast.LENGTH_LONG).show()
             } else {
+                SharedPreferences.putBoolean(Constants.SharedPreferences.IsFirstLaunch, true)
+                SharedPreferences.putString(
+                    Constants.SharedPreferences.CurrentWebLink,
+                    binding.etWeblink.text.toString()
+                )
                 val intent = Intent(this, DefaultWebsiteConfigurationScreen::class.java)
                 intent.putExtra("WebLink", binding.etWeblink.text.toString())
                 startActivity(intent)

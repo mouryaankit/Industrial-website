@@ -1,40 +1,52 @@
 package com.example.webview.activity
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import androidx.appcompat.app.AppCompatActivity
+import com.example.webview.BaseActivity
 import com.example.webview.R
 import com.example.webview.constants.Constants
+import com.example.webview.database.DataBase
 import com.example.webview.databinding.ActivityWebViewBinding
 
-class WebViewActivity : AppCompatActivity() {
+class WebViewActivity : BaseActivity() {
 
-    lateinit var binding: ActivityWebViewBinding
-    lateinit var bundle :Bundle
+    lateinit var webViewBinding: ActivityWebViewBinding
+    private lateinit var bundle: Bundle
+    private lateinit var dataBase: DataBase
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityWebViewBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        webViewBinding = ActivityWebViewBinding.inflate(layoutInflater)
+        setContentView(webViewBinding.root)
 
-        val data = intent.getStringExtra("WebLink")
+        dataBase = DataBase(this)
+        val webURl = intent.getStringExtra("WebLink")
         bundle = intent.getBundleExtra("WebStyles")!!
         val fontFamilyURL = bundle.getString(Constants.ConfigComponents.fontFamily + "URL", null)
         val fontFamilyName = bundle.getString(Constants.ConfigComponents.fontFamily + "Name", null)
-        val backgroundColor = bundle.getInt(Constants.ConfigComponents.backgroundColor, resources.getColor(R.color.primary_color))
+        val backgroundColor = bundle.getInt(
+            Constants.ConfigComponents.backgroundColor,
+            resources.getColor(R.color.primary_color)
+        )
         val fontSizeList = bundle.getStringArrayList(Constants.ConfigComponents.fontSize)
 
+        val configStyleData = dataBase.fetchData()
 
-        if (data != null) {
-            binding.web.loadUrl(data)
+        val fontUrl = configStyleData[configStyleData.size - 1].fontUrl
+        Log.d(
+            "DATA--->",
+            configStyleData[configStyleData.size - 1].url + " " + configStyleData[configStyleData.size - 1].fontUrl + "" + configStyleData[configStyleData.size - 1].fontName + " " + configStyleData[configStyleData.size - 1].backgroundColor + " " + configStyleData[configStyleData.size - 1].fontSize + " "
+        )
+
+        if (webURl != null) {
+            webViewBinding.web.loadUrl(webURl)
         }
 
-        binding.web.settings.javaScriptEnabled = true
+        webViewBinding.web.settings.javaScriptEnabled = true
 
-        binding.web.webViewClient = object : WebViewClient() {
+        webViewBinding.web.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(
                 view: WebView?,
                 request: WebResourceRequest?
@@ -86,8 +98,8 @@ class WebViewActivity : AppCompatActivity() {
                      
                     })()""".trimIndent()
 
-                if (data != null) {
-                    binding.web.loadUrl(code)
+                if (webURl != null) {
+                    webViewBinding.web.loadUrl(code)
                 }
             }
         }
